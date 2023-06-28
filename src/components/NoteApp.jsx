@@ -4,6 +4,7 @@ import Navigation from "./Navigation";
 import HomePage from "../pages/HomePage";
 import AddPage from "../pages/AddPage";
 import NoteDetailPage from "../pages/NoteDetailPage";
+import NoteNotFound from "../pages/NoteNotFound";
 
 function NoteApp() {
   return (
@@ -17,6 +18,7 @@ function NoteApp() {
           <Route path="/" element={<HomePage />} />
           <Route path="/add" element={<AddPage />} />
           <Route path="/notes/:id" element={<NoteDetailPage />} />
+          <Route path="*" element={<NoteNotFound />} />
         </Routes>
       </main>
     </div>

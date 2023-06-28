@@ -58,7 +58,7 @@ class NoteInput extends React.Component {
           value={this.state.body}
           onChange={this.onBodyChangeEventHandler}
         />
-        <button className="action" type="submit">
+        <button className="action-add" type="submit">
           <FiSave />
         </button>
       </form>

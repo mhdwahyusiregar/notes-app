@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import NoteList from "../components/NoteList";
 import SearchBar from "../components/SearchBar";
 import { deleteNote, getAllNotes } from "../utils/local-data";
-import { FiPlus } from "react-icons/fi";
+// import { FiPlus } from "react-icons/fi";
 
 function HomePageWrapper() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -76,11 +76,11 @@ class HomePage extends React.Component {
             <NoteList notes={notes} />
           </section>
         )}
-        <section className="homepage__action">
+        {/* <section className="homepage__action">
           <button className="action" type="button" title="Tambah">
             <FiPlus />
           </button>
-        </section>
+        </section> */}
       </section>
     );
   }

@@ -1,16 +1,19 @@
 import PropTypes from "prop-types";
-
+import { FiXOctagon } from "react-icons/fi";
+import { showFormattedDate } from "../../utils/index";
 function NoteDetail({ id, title, body, createdAt, archived, onDelete }) {
+  const formattedDate = showFormattedDate(createdAt);
+
   return (
     <div className="section">
       <div className="content">
-        <h2>{title}</h2>
-        <p>{createdAt}</p>
-        <p>{body}</p>
+        <h2 className="detail-page__title">{title}</h2>
+        <p className="detail-page__createAt">{formattedDate}</p>
+        <p className="detail-page__body">{body}</p>
         <p>{archived}</p>
-        <div className="buttons">
-          <button className="button is-danger" onClick={() => onDelete(id)}>
-            Delete
+        <div className="detail-page__action">
+          <button className="action" type="button" onClick={() => onDelete(id)}>
+            <FiXOctagon />
           </button>
         </div>
       </div>

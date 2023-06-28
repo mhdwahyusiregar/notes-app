@@ -14,5 +14,11 @@ function NoteList({ notes }) {
 
 NoteList.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // notes: PropTypes.arrayOf({
+  //   id: PropTypes.string.isRequired,
+  //   title: PropTypes.string.isRequired,
+  //   body: PropTypes.string.isRequired,
+  //   createdAt: PropTypes.string.isRequired,
+  // }),
 };
 export default NoteList;

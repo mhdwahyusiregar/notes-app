@@ -19,7 +19,7 @@ class DetailPage extends React.Component {
 
   render() {
     if (this.state.note === null) {
-      return <p>tidak ada catatan!</p>;
+      return <p>Note is not found!</p>;
     }
 
     return (
