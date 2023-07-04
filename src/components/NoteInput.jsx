@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { FiSave } from "react-icons/fi";
+import { LocaleConsumer } from "../contexts/LocaleContext";
 
 class NoteInput extends React.Component {
   constructor(props) {
@@ -40,28 +41,42 @@ class NoteInput extends React.Component {
 
   render() {
     return (
-      <form
-        className="add-new-page__input"
-        onSubmit={this.onSubmitEventHandler}
-      >
-        <input
-          className="add-new-page__input__title"
-          type="text"
-          placeholder="Catatan sangat rahasia"
-          value={this.state.title}
-          onChange={this.onTitleChangeEventHandler}
-        />
-        <textarea
-          className="add-new-page__input__body"
-          type="text"
-          placeholder="Sebenarnya saya adalah ..."
-          value={this.state.body}
-          onChange={this.onBodyChangeEventHandler}
-        />
-        <button className="action-add" type="submit">
-          <FiSave />
-        </button>
-      </form>
+      <LocaleConsumer>
+        {({ locale }) => {
+          return (
+            <form
+              className="add-new-page__input"
+              onSubmit={this.onSubmitEventHandler}
+            >
+              <input
+                className="add-new-page__input__title"
+                type="text"
+                placeholder={
+                  locale === "id"
+                    ? "Catatan sangat rahasiaa"
+                    : "Top secret note"
+                }
+                value={this.state.title}
+                onChange={this.onTitleChangeEventHandler}
+              />
+              <textarea
+                className="add-new-page__input__body"
+                type="text"
+                placeholder={
+                  locale === "id"
+                    ? "Sebenarnya saya adalah ..."
+                    : "Actually I am..."
+                }
+                value={this.state.body}
+                onChange={this.onBodyChangeEventHandler}
+              />
+              <button className="action-add" type="submit">
+                <FiSave />
+              </button>
+            </form>
+          );
+        }}
+      </LocaleConsumer>
     );
   }
 }

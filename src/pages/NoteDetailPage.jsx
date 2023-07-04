@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import NoteDetail from "../components/DetailNote/NoteDetail";
-import { getNote, deleteNote } from "../utils/local-data";
+import { getNote, deleteNote } from "../utils/network-data";
 import NoteDetailEmpty from "../components/DetailNote/NoteDetailEmpty";
 
 function NoteDetailPageWrapper() {
@@ -16,17 +16,32 @@ class NoteDetailPage extends React.Component {
     super(props);
 
     this.state = {
-      note: getNote(props.id),
+      note: null,
+      initializing: true,
     };
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
   }
 
-  onDeleteHandler(id) {
-    deleteNote(id);
+  async componentDidMount() {
+    const { data } = await getNote(this.props.id);
+
+    this.setState(() => {
+      return {
+        note: data,
+        initializing: false,
+      };
+    });
+  }
+
+  async onDeleteHandler(id) {
+    await deleteNote(id);
     this.props.navigate("/");
   }
 
   render() {
+    if (this.state.initializing) {
+      return null;
+    }
     if (!this.state.note) {
       return <NoteDetailEmpty />;
     }

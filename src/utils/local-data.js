@@ -46,6 +46,12 @@ let notes = [
 function getAllNotes() {
   return notes;
 }
+function register() {
+  return notes;
+}
+function login() {
+  return notes;
+}
 
 function getNote(id) {
   const foundedNote = notes.find((note) => note.id === id);
@@ -105,6 +111,8 @@ function editNote({ id, title, body }) {
 }
 
 export {
+  register,
+  login,
   getAllNotes,
   getActiveNotes,
   getArchivedNotes,
