@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import ToggleTheme from "./ToggleTheme";
 import Navigation from "./Navigation";
 import HomePage from "../pages/HomePage";
 import AddPage from "../pages/AddPage";
@@ -82,6 +83,8 @@ class NoteApp extends React.Component {
         initializing: false,
       };
     });
+
+    document.documentElement.setAttribute("data-theme", this.state.theme);
   }
 
   onLogout() {

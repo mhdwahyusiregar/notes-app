@@ -6,37 +6,6 @@ import SearchBar from "../components/SearchBar";
 import { getActiveNotes, deleteNote } from "../utils/network-data";
 import { LocaleConsumer } from "../contexts/LocaleContext";
 
-// function HomePage() {
-//   const [searchParams, setSearchParams] = useSearchParams();
-//   const [notes, setNotes] = React.useState([]);
-//   const [keyword, setKeyword] = React.useState(() => {
-//     return searchParams.get("keyword") || "";
-//   });
-//   // const { locale } = React.useContext(LocaleContext);
-
-//   React.useEffect(() => {
-//     getActiveNotes().then(({ data }) => {
-//       setNotes(data);
-//     });
-//   }, []);
-
-//   async function onDeleteHandler(id) {
-//     await deleteNote(id);
-
-//     // update the notes state from network.js
-//     const { data } = await getActiveNotes();
-//     setNotes(data);
-//   }
-
-//   function onKeywordChangeHandler(keyword) {
-//     setKeyword(keyword);
-//     setSearchParams({ keyword });
-//   }
-
-//   const filteredNotes = notes.filter((note) => {
-//     return note.name.toLowerCase().includes(keyword.toLowerCase());
-//   });
-
 function HomePageWrapper() {
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -130,7 +99,7 @@ class HomePage extends React.Component {
   }
 }
 
-SearchBar.propType = {
+HomePage.propTypes = {
   keyword: PropTypes.string.isRequired,
   keywordChange: PropTypes.func.isRequired,
 };
